@@ -1,8 +1,5 @@
 import json
-
-#with open("operations.json", "r") as file:
-    #data_json = file.read()
-    #data = json.dumps(data_json, indent=2)
+from datetime import datetime
 
 
 def load_data():
@@ -11,14 +8,9 @@ def load_data():
         data = json.loads(data_json)
         return data
 
-data = load_data()
-print(len(data))
-print(type(data))
-print(data)
-
 
 def sort_data_executed():
-    load_data()
+    data = load_data()
     data_sorted_executed = []
     for i in data:
         if i["state"] == "EXECUTED":
@@ -26,16 +18,16 @@ def sort_data_executed():
     return data_sorted_executed
 
 
-print(sort_data_executed())
-print(len(sort_data_executed()))
+#def sortFunction(data):
+    #return datetime.datetime.fromisoformat(data["date"])
+
+#data = sort_data_executed()
+
+#data.sort(key=sortFunction, reverse=True)
+#print(data)
 
 
-#def sortFunction(element):
-    #return element["state"] == 'EXECUTED'
-
-
-
-#sortFunction()
-#result = data.sort(key=sortFunction)
-#print(result)
+#d = datetime.datetime.fromisoformat('2019-08-26T10:50:58.294041')
+#print(d)
+#print(type(d))
 
