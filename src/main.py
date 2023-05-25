@@ -9,7 +9,7 @@ def sortFunction(data):
 data = sort_data_executed()
 
 data.sort(key=sortFunction, reverse=True)
-print(data[0:5])
+#print(data[0:5])
 
 class Output:
     def __init__(self, date, description, operationAmount, from_, to):
@@ -27,6 +27,23 @@ class Output:
        print(f"{self.from_}")
 
 
-operation_1 = Output(data[1]["date"], data[1]["description"], data[1]["operationAmount"], data[1]["from"], data[1]["to"])
+def output_data_func(value):
+    output_data = []
+    number_of_index = 0
+    for i in data[0:value]:
+        output_data.append(i)
+        number_of_index +=1
+        operation_1 = Output(output_data[number_of_index].get("date"), output_data[number_of_index].get("description"), output_data[number_of_index].get("operationAmount"), output_data[number_of_index].get("from"), output_data[number_of_index].get("to"))
+        operation_1.print_1th_string()
+        operation_1.print_2th_string()
+
+    return output_data
+
+output_data = output_data_func(4)
+
+
+
+
+operation_1 = Output(data[0]["date"], data[0]["description"], data[0]["operationAmount"], data[0].get("from"), data[0]["to"])
 operation_1.print_1th_string()
 operation_1.print_2th_string()
