@@ -6,12 +6,15 @@ def sortFunction(data):
     """Функция преобразования из isoformat в дату"""
     return datetime.datetime.fromisoformat(data["date"])
 
+
 data = sort_data_executed()  # вывод значения даты из функции sortFunction
+
 
 data.sort(key=sortFunction, reverse=True)  # сортировка по дате
 
 
-def output_data_func(value):
+def main(value):
+    """Основная функция для создания экземпляров класса (5 последних операций)"""
     output_data = []
     number_of_index = 0
     for i in data[0:value]:
@@ -23,4 +26,7 @@ def output_data_func(value):
         number_of_index += 1
     return output_data
 
-output_data = output_data_func(5)
+
+if __name__ == "__main__":
+    main(5)
+

@@ -1,6 +1,7 @@
 import datetime
 import re
 
+
 class Output:
     def __init__(self, date, description, operationAmount, from_, to):
         self.date = date
@@ -32,6 +33,7 @@ class Output:
             print(f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} {self.from_.replace(' ', '')[-16:-12]} {self.from_.replace(' ', '')[-12:-10]}** **** {self.from_.replace(' ', '')[-4:]} -> {re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} {self.to.replace(' ', '')[-16:-12]} {self.to.replace(' ', '')[-12:-10]}** **** {self.to.replace(' ', '')[-4:]}")  # Example: Visa Platinum 7000 79** **** 6361 -> Visa Platinum 7000 79** **** 6361
 
     def print_3th_string(self):
+        """Третья строка вывода"""
         print(f"{self.operationAmount['amount']} {self.operationAmount['currency']['name']}\n")
 
 
