@@ -3,7 +3,7 @@ import json
 
 def load_data():
     """Функция получения данных из файла operation.json"""
-    with open("operations.json", "r") as file:
+    with open("src/operations.json", "r", encoding='utf-8') as file:
         data_json = file.read()
         data = json.loads(data_json)
     return data

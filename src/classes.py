@@ -12,29 +12,37 @@ class Output:
 
     def print_1th_string(self):
         """Первая строка вывода"""
-        date_only = datetime.datetime.fromisoformat(self.date).date().strftime("%Y.%m.%d")
-        print(f"{date_only} {self.description}")
+        date_only = datetime.datetime.fromisoformat(self.date).date().strftime("%d.%m.%Y")
+        return f"{date_only} {self.description}"
 
     def print_2th_string(self):
         """Вторая строка вывода"""
         if self.from_ == None:
-            pass
+            return '*'
 
         elif "Счет" in self.from_ and "Счет" in self.to:  #From и To имеют значение "Счёт"
-            print(f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} **{self.from_.replace(' ', '')[-4:]} -> {re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} **{self.to.replace(' ', '')[-4:]}")  # Example: -> Счет **9937 -> -> Счет **9638
+            return (f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} **{self.from_.replace(' ', '')[-4:]} -> "
+                  f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} **{self.to.replace(' ', '')[-4:]}")  # Example: -> Счет **9937 -> -> Счет **9638
 
         elif "Счет" in self.from_:  #From имеют значение "Счёт"
-            print(f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} **{self.from_.replace(' ', '')[-4:]} -> {re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} {self.to.replace(' ', '')[-16:-12]} {self.to.replace(' ', '')[-12:-10]}** **** {self.to.replace(' ', '')[-4:]}")  # Example: Счет **9638 -> Visa Platinum 7000 79** **** 6361
+            return (f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} **{self.from_.replace(' ', '')[-4:]} -> "
+                  f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} {self.to.replace(' ', '')[-16:-12]} "
+                  f"{self.to.replace(' ', '')[-12:-10]}** **** {self.to.replace(' ', '')[-4:]}")  # Example: Счет **9638 -> Visa Platinum 7000 79** **** 6361
 
         elif "Счет" in self.to:  #To имеют значение "Счёт"
-            print(f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} {self.from_.replace(' ', '')[-16:-12]} {self.from_.replace(' ', '')[-12:-10]}** **** {self.from_.replace(' ', '')[-4:]} -> {re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} **{self.to.replace(' ', '')[-4:]}")  # Example: Visa Platinum 7000 79** **** 6361 -> Счет **9638
+            return (f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} {self.from_.replace(' ', '')[-16:-12]} "
+                  f"{self.from_.replace(' ', '')[-12:-10]}** **** {self.from_.replace(' ', '')[-4:]} -> "
+                  f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} **{self.to.replace(' ', '')[-4:]}")  # Example: Visa Platinum 7000 79** **** 6361 -> Счет **9638
 
         else:   #Поля не имеют значение "Счёт"
-            print(f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} {self.from_.replace(' ', '')[-16:-12]} {self.from_.replace(' ', '')[-12:-10]}** **** {self.from_.replace(' ', '')[-4:]} -> {re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} {self.to.replace(' ', '')[-16:-12]} {self.to.replace(' ', '')[-12:-10]}** **** {self.to.replace(' ', '')[-4:]}")  # Example: Visa Platinum 7000 79** **** 6361 -> Visa Platinum 7000 79** **** 6361
+            return (f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.from_)} {self.from_.replace(' ', '')[-16:-12]} "
+                  f"{self.from_.replace(' ', '')[-12:-10]}** **** {self.from_.replace(' ', '')[-4:]} -> "
+                  f"{re.sub('[^A-Za-zА-Яа-я ]', '', self.to)} {self.to.replace(' ', '')[-16:-12]} "
+                  f"{self.to.replace(' ', '')[-12:-10]}** **** {self.to.replace(' ', '')[-4:]}")  # Example: Visa Platinum 7000 79** **** 6361 -> Visa Platinum 7000 79** **** 6361
 
     def print_3th_string(self):
         """Третья строка вывода"""
-        print(f"{self.operationAmount['amount']} {self.operationAmount['currency']['name']}\n")
+        return f"{self.operationAmount['amount']} {self.operationAmount['currency']['name']}\n"
 
 
 #Maestro 7810 8465 9678 5568
